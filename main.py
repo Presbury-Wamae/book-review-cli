@@ -155,6 +155,43 @@ def view_reviews():
         print("❌ Invalid input. Please enter a number.")
     
     session.close()
+    
+
+def view_reviews():
+    print("\n🔍 View Reviews for a Book")
+    session = Session()
+
+    books = session.query(Book).all()
+    if not books:
+        print("📭 No books available.")
+        session.close()
+        return
+
+    for book in books:
+        print(f"{book.id}. {book.title} by {book.author}")
+
+    try:
+        book_id = int(input("Enter the ID of the book to view reviews: ").strip())
+        book = session.query(Book).get(book_id)
+
+        if not book:
+            print("❌ Book not found.")
+            session.close()
+            return
+
+        print(f"\n📝 Reviews for '{book.title}':")
+        if not book.reviews:
+            print("📭 No reviews yet.")
+        else:
+            for review in book.reviews:
+                print(f"⭐ {review.rating}/5 by {review.reader.name}")
+                print(f"💬 {review.comment}\n")
+
+    except ValueError:
+        print("❌ Invalid input. Please enter a valid number.")
+
+    session.close()
+
 
 
 

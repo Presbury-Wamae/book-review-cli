@@ -192,11 +192,6 @@ def view_reviews():
 
     session.close()
 
-
-
-
-
-
 def main_menu():
     while True:
         print("\n==== Book Review CLI ====")

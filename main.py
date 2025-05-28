@@ -38,7 +38,7 @@ def delete_book():
     books = session.query(Book).all()
 
     if not books:
-        print(" No books available to delete.")
+        print("No books available to delete.")
         session.close()
         return
 
@@ -50,14 +50,14 @@ def delete_book():
         book_to_delete = session.query(Book).get(book_id)
 
         if not book_to_delete:
-            print(" Book not found.")
+            print("Book not found.")
             return
 
         confirm = input(f"Are you sure you want to delete '{book_to_delete.title}'? (y/n): ").lower()
         if confirm == "y":
             session.delete(book_to_delete)
             session.commit()
-            print(f" Book '{book_to_delete.title}' deleted.")
+            print(f"Book '{book_to_delete.title}' deleted.")
         else:
             print("ℹ Delete cancelled.")
 
@@ -68,12 +68,12 @@ def delete_book():
 
 
 def add_review():
-    print("\n📝 Add a Review")
+    print("\n Add a Review")
     session = Session()
 
     books = session.query(Book).all()
     if not books:
-        print("📭 No books available. Please add a book first.")
+        print("No books available. Please add a book first.")
         session.close()
         return
 
@@ -85,13 +85,13 @@ def add_review():
         book = session.query(Book).get(book_id)
 
         if not book:
-            print("❌ Book not found.")
+            print("Book not found.")
             session.close()
             return
 
         reader_name = input("Enter your name: ").strip()
         if not reader_name:
-            print("❌ Reader name is required.")
+            print("Reader name is required.")
             session.close()
             return
 
@@ -104,7 +104,7 @@ def add_review():
 
         rating = int(input("Enter a rating (1-5): ").strip())
         if rating < 1 or rating > 5:
-            print("❌ Rating must be between 1 and 5.")
+            print("Rating must be between 1 and 5.")
             session.close()
             return
 
@@ -113,10 +113,10 @@ def add_review():
 
         session.add(review)
         session.commit()
-        print(f"✅ Review added for '{book.title}' by {reader.name}!")
+        print(f"Review added for '{book.title}' by {reader.name}!")
 
     except ValueError:
-        print("❌ Invalid input. Please enter numbers where expected.")
+        print("Invalid input. Please enter numbers where expected.")
 
     session.close()
 
@@ -139,31 +139,31 @@ def view_reviews():
         book = session.query(Book).get(book_id)
 
         if not book:
-            print("❌ Book not found.")
+            print("Book not found.")
             session.close()
             return
 
         if not book.reviews:
-            print("📝 No reviews for this book yet.")
+            print("No reviews for this book yet.")
         else:
-            print(f"\n📖 Reviews for '{book.title}':")
+            print(f"\n Reviews for '{book.title}':")
             for review in book.reviews:
                 print(f"- {review.reader.name} rated {review.rating}/5")
                 print(f"  Comment: {review.comment}\n")
 
     except ValueError:
-        print("❌ Invalid input. Please enter a number.")
+        print("Invalid input. Please enter a number.")
     
     session.close()
     
 
 def view_reviews():
-    print("\n🔍 View Reviews for a Book")
+    print("\n View Reviews for a Book")
     session = Session()
 
     books = session.query(Book).all()
     if not books:
-        print("📭 No books available.")
+        print("No books available.")
         session.close()
         return
 
@@ -175,20 +175,20 @@ def view_reviews():
         book = session.query(Book).get(book_id)
 
         if not book:
-            print("❌ Book not found.")
+            print("Book not found.")
             session.close()
             return
 
-        print(f"\n📝 Reviews for '{book.title}':")
+        print(f"\n Reviews for '{book.title}':")
         if not book.reviews:
-            print("📭 No reviews yet.")
+            print("No reviews yet.")
         else:
             for review in book.reviews:
-                print(f"⭐ {review.rating}/5 by {review.reader.name}")
-                print(f"💬 {review.comment}\n")
+                print(f"{review.rating}/5 by {review.reader.name}")
+                print(f"{review.comment}\n")
 
     except ValueError:
-        print("❌ Invalid input. Please enter a valid number.")
+        print("Invalid input. Please enter a valid number.")
 
     session.close()
 

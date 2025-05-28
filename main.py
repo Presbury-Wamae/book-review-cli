@@ -122,12 +122,12 @@ def add_review():
 
 
 def view_reviews():
-    print("\n🔍 View Reviews for a Book")
+    print("\n View Reviews for a Book")
     session = Session()
 
     books = session.query(Book).all()
     if not books:
-        print("📭 No books available.")
+        print("No books available.")
         session.close()
         return
 

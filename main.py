@@ -3,9 +3,62 @@ from db import Session
 from models import Book, Reader, Review
 
 
+def register_reader():
+    print("Register a New Reader")
+    session = Session()
+
+    name = input("Enter your name: ").strip()
+
+    if not name:
+        print("Name is required.")
+        session.close()
+        return
+
+    existing_reader = session.query(Reader).filter_by(name=name).first()
+    if existing_reader:
+        print(f"Reader '{name}' is already registered.")
+    else:
+        new_reader = Reader(name=name)
+        session.add(new_reader)
+        session.commit()
+        print(f"Reader '{name}' registered successfully!")
+
+    session.close()
+
+
+def view_reader_reviews():
+    print("View Reviews by a Reader")
+    session = Session()
+
+    name = input("Enter the reader's name: ").strip()
+    if not name:
+        print("Reader name is required.")
+        session.close()
+        return
+
+    reader = session.query(Reader).filter_by(name=name).first()
+    if not reader:
+        print(f"Reader '{name}' not found.")
+        session.close()
+        return
+
+    reviews = reader.reviews
+    if not reviews:
+        print(f"Reader '{name}' has not written any reviews yet.")
+    else:
+        print(f"Reviews by '{name}':")
+        for review in reviews:
+            print(f"- '{review.book.title}' rated {review.rating}/5")
+            print(f"  Comment: {review.comment}\n")
+
+    session.close()
+
+
+
+
 
 def add_book():
-    print("\n Add a New Book")
+    print("Add a New Book")
     title = input("Enter the book title: ").strip()
     author = input("Enter the author name: ").strip()
     genre = input("Enter the genre: ").strip()
@@ -18,7 +71,7 @@ def add_book():
     new_book = Book(title=title, author=author, genre=genre)
     session.add(new_book)
     session.commit()
-    print(f" Book '{title}' added successfully!")
+    print(f"Book '{title}' added successfully!")
 
 
 def view_books():
@@ -33,7 +86,7 @@ def view_books():
             print(f"{book.id}. {book.title} by {book.author} [{book.genre}]")
             
 def delete_book():
-    print("\n Delete a Book")
+    print("Delete a Book")
     session = Session()
     books = session.query(Book).all()
 
@@ -59,7 +112,7 @@ def delete_book():
             session.commit()
             print(f"Book '{book_to_delete.title}' deleted.")
         else:
-            print("ℹ Delete cancelled.")
+            print("Delete cancelled.")
 
     except ValueError:
         print("Invalid input. Please enter a number.")
@@ -68,7 +121,7 @@ def delete_book():
 
 
 def add_review():
-    print("\n Add a Review")
+    print("Add a Review")
     session = Session()
 
     books = session.query(Book).all()
@@ -95,7 +148,6 @@ def add_review():
             session.close()
             return
 
-        # Get or create reader
         reader = session.query(Reader).filter_by(name=reader_name).first()
         if not reader:
             reader = Reader(name=reader_name)
@@ -122,7 +174,7 @@ def add_review():
 
 
 def view_reviews():
-    print("\n View Reviews for a Book")
+    print("View Reviews for a Book")
     session = Session()
 
     books = session.query(Book).all()
@@ -146,7 +198,7 @@ def view_reviews():
         if not book.reviews:
             print("No reviews for this book yet.")
         else:
-            print(f"\n Reviews for '{book.title}':")
+            print(f"Reviews for '{book.title}':")
             for review in book.reviews:
                 print(f"- {review.reader.name} rated {review.rating}/5")
                 print(f"  Comment: {review.comment}\n")
@@ -155,65 +207,35 @@ def view_reviews():
         print("Invalid input. Please enter a number.")
     
     session.close()
-    
-
-def view_reviews():
-    print("\n View Reviews for a Book")
-    session = Session()
-
-    books = session.query(Book).all()
-    if not books:
-        print("No books available.")
-        session.close()
-        return
-
-    for book in books:
-        print(f"{book.id}. {book.title} by {book.author}")
-
-    try:
-        book_id = int(input("Enter the ID of the book to view reviews: ").strip())
-        book = session.query(Book).get(book_id)
-
-        if not book:
-            print("Book not found.")
-            session.close()
-            return
-
-        print(f"\n Reviews for '{book.title}':")
-        if not book.reviews:
-            print("No reviews yet.")
-        else:
-            for review in book.reviews:
-                print(f"{review.rating}/5 by {review.reader.name}")
-                print(f"{review.comment}\n")
-
-    except ValueError:
-        print("Invalid input. Please enter a valid number.")
-
-    session.close()
 
 def main_menu():
     while True:
         print("\n==== Book Review CLI ====")
-        print("1. Add a new book")
-        print("2. View all books")
-        print("3. Delete a book")
-        print("4. Add a review")
-        print("5. View reviews for a book")
-        print("6. Exit")
+        print("1. Register a reader")
+        print("2. View reader's reviews")
+        print("3. Add a new book")
+        print("4. View all books")
+        print("5. Delete a book")
+        print("6. Add a review")
+        print("7. View reviews for a book")
+        print("8. Exit")
         choice = input("Select an option: ").strip()
-
+        
         if choice == "1":
-            add_book()
+            register_reader()
         elif choice == "2":
-            view_books()
+            view_reader_reviews()
         elif choice == "3":
-            delete_book()
+            add_book()
         elif choice == "4":
-            add_review()
+            view_books()
         elif choice == "5":
-            view_reviews()  
+            delete_book()
         elif choice == "6":
+            add_review()
+        elif choice == "7":
+            view_reviews()  
+        elif choice == "8":
             print("Goodbye!")
             break
         else:

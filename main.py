@@ -4,6 +4,7 @@ from sqlalchemy import func
 from models import Book, Reader, Review
 
 
+
 def register_reader():
     print("Register a New Reader")
     session = Session()
@@ -25,6 +26,7 @@ def register_reader():
         print(f"Reader '{name}' registered successfully!")
 
     session.close()
+
 
 
 def view_reader_reviews():
@@ -56,8 +58,6 @@ def view_reader_reviews():
 
 
 
-
-
 def add_book():
     print("Add a New Book")
     title = input("Enter the book title: ").strip()
@@ -75,6 +75,7 @@ def add_book():
     print(f"Book '{title}' added successfully!")
 
 
+
 def view_books():
     print("\n All Books:")
     session = Session()
@@ -85,6 +86,8 @@ def view_books():
     else:
         for book in books:
             print(f"{book.id}. {book.title} by {book.author} [{book.genre}]")
+
+
             
 def delete_book():
     print("Delete a Book")
@@ -174,6 +177,7 @@ def add_review():
     session.close()
 
 
+
 def view_reviews():
     print("View Reviews for a Book")
     session = Session()
@@ -210,6 +214,7 @@ def view_reviews():
     session.close()
     
 
+
 def book_insights():
     print("Book Insights")
     session = Session()
@@ -233,6 +238,7 @@ def book_insights():
         print()
 
     session.close()
+
 
 
 def main_menu():
@@ -270,6 +276,8 @@ def main_menu():
             break
         else:
             print("Invalid choice. Please select a valid option.")
+ 
+ 
             
 if __name__ == "__main__":
     main_menu()

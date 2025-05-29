@@ -1,135 +1,175 @@
+BOOK REVIEW CLI  
 
-BOOK REVIEW CLI
-Your personal command-line book tracker and review system
+Your personal command-line book tracker and review system 
 
+OVERVIEW  
 
-OVERVIEW
-The Book Review CLI is a command-line application that allows users to:
+The Book Review CLI is a command-line application that allows users to: 
 
-Add and manage books
+Add and manage books 
 
-Write and view reviews for books
+Write and view reviews for books 
 
-Register readers and track their activity
+Register readers and track their activity 
 
-Get insights like total reviews and average rating per book
+Get insights like total reviews and average rating per book 
 
-Built using Python and SQLAlchemy, this tool is ideal for bootcamp projects, personal tracking, or CLI-based apps.
+Built using Python and SQLAlchemy, this tool is ideal for bootcamp projects, personal tracking, or CLI-based apps. 
 
+🛠 FEATURES  
 
-🛠 FEATURES
-Add, view, and delete books
+Add, view, and delete books 
 
-Add reviews to books
+Add reviews to books 
 
-View all reviews for a selected book
+View all reviews for a selected book 
 
-Register readers
+Register readers 
 
-View all reviews by a specific reader
+View all reviews by a specific reader 
 
-View book insights: number of reviews and average rating
+View book insights: number of reviews and average rating 
 
+PROJECT STRUCTURE  
 
+book-review-cli/  
 
-PROJECT STRUCTURE
-bash
-Copy
-Edit
-book-review-cli/
-├── alembic/                  # Alembic migration scripts
-├── db.py                     # SQLAlchemy session and engine setup
-├── main.py                   # CLI entry point and logic
-├── models.py                 # SQLAlchemy models (Book, Reader, Review)
-├── README.md                 # You're here!
-SETUP INSTRUCTIONS
-Clone the repo
+├── alembic/ 					# Alembic migration scripts  
 
-bash
-Copy
-Edit
-git clone <your-repo-url>
-cd book-review-cli
-Create and activate a virtual environment
+├── db.py 					# SQLAlchemy session and engine setup  
 
-bash
-Copy
-Edit
-python3 -m venv venv
-source venv/bin/activate
-Install dependencies
+├── main.py 					# CLI entry point and logic 
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Run Alembic migrations
+├── models.py 				# SQLAlchemy models (Book, Reader, Review) 
 
-bash
-Copy
-Edit
-alembic upgrade head
-Run the app
+ ├── README.md 				# You're here!  
 
-bash
-Copy
-Edit
-python main.py
+ 
 
+SETUP INSTRUCTIONS  
 
-USAGE GUIDE
-Once the app is running, you’ll see a menu like:
+Clone the repo 
 
-markdown
-Copy
-Edit
-==== Book Review CLI ====
-1. Add a new book
-2. View all books
-3. Delete a book
-4. Add a review
-5. View reviews for a book
-6. Register a reader
-7. View reader's reviews
-8. Book insights
-9. Exit
-Follow the prompts to interact with the database.
+ git clone  
 
+cd book-review-cli  
 
+ 
 
-TECHNOLOGIES USED
-Python 3
+Create and activate a virtual environment 
 
-SQLAlchemy ORM
+python3  -m  venv  virtual 
 
-SQLite (default DB)
+source venv/bin/activate  
 
-Alembic (migrations)
+ 
 
+Install dependencies 
 
+pip install -r requirements.txt  
 
-INSIGHTS FEATURE
-This feature provides:
+ 
 
-Number of reviews per book
+Run Alembic migrations 
 
-Average rating per book
+ alembic upgrade head  
 
-Perfect for understanding how books are performing among readers.
+ 
 
+Run the app 
 
+ python main.py 
 
-FUTURE IMPROVEMENTS
-Add CLI-based search for books
+ 
 
-Filter reviews by rating
+ 
 
-Export data to CSV or JSON
+ 
 
-Add login system for readers
+ 
 
+ 
 
+ 
 
-AUTHOR
-Project built by Presbury Wamae
-A student at Moringa School, passionate about web dev and game design
+ 
+
+USAGE GUIDE  
+
+Once the app is running, you’ll see a menu like: 
+
+markdown Copy Edit ==== Book Review CLI ==== 
+
+Add a new book 
+
+View all books 
+
+Delete a book 
+
+Add a review 
+
+View reviews for a book 
+
+Register a reader 
+
+View reader's reviews 
+
+Book insights 
+
+Exit Follow the prompts to interact with the database. 
+
+ 
+
+TECHNOLOGIES USED  
+
+Python 3 
+
+SQLAlchemy ORM 
+
+SQLite (default DB) 
+
+Alembic (migrations) 
+
+ 
+
+INSIGHTS FEATURE  
+
+This feature provides: 
+
+Adding a new book 
+
+Viewing all books  
+
+Deleting a specific book 
+
+Registering a new reader  
+
+Viewing all reviews a reader has made  
+
+Adding a review to a book 
+
+Viewing reviews for a book   
+
+Number of reviews per book 
+
+Average rating per book 
+
+Perfect for understanding how books are performing among readers. 
+
+FUTURE IMPROVEMENTS  
+
+Add CLI-based search for books 
+
+Filter reviews by rating 
+
+Export data to CSV or JSON 
+
+Add login system for readers 
+
+AUTHOR  
+
+Project built by Presbury Wamae  
+
+A student at Moringa School, passionate about web dev and game design 
+
+ 

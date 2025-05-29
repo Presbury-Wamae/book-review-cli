@@ -1,5 +1,6 @@
 from models import Book
 from db import Session
+from sqlalchemy import func
 from models import Book, Reader, Review
 
 
@@ -207,6 +208,32 @@ def view_reviews():
         print("Invalid input. Please enter a number.")
     
     session.close()
+    
+
+def book_insights():
+    print("Book Insights")
+    session = Session()
+
+    books = session.query(Book).all()
+    if not books:
+        print("No books found.")
+        session.close()
+        return
+
+    for book in books:
+        review_count = session.query(func.count(Review.id)).filter(Review.book_id == book.id).scalar()
+        average_rating = session.query(func.avg(Review.rating)).filter(Review.book_id == book.id).scalar()
+
+        print(f"{book.title} by {book.author}")
+        print(f"   - Total Reviews: {review_count}")
+        if average_rating:
+            print(f"   - Average Rating: {round(average_rating, 2)}/5")
+        else:
+            print("   - Average Rating: N/A (no reviews)")
+        print()
+
+    session.close()
+
 
 def main_menu():
     while True:
@@ -218,7 +245,8 @@ def main_menu():
         print("5. Delete a book")
         print("6. Add a review")
         print("7. View reviews for a book")
-        print("8. Exit")
+        print("8. Book insights")
+        print("9. Exit")
         choice = input("Select an option: ").strip()
         
         if choice == "1":
@@ -236,6 +264,8 @@ def main_menu():
         elif choice == "7":
             view_reviews()  
         elif choice == "8":
+            book_insights()
+        elif choice == "9":
             print("Goodbye!")
             break
         else:

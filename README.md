@@ -104,7 +104,8 @@ View reader's reviews
 
 Book insights 
 
-Exit Follow the prompts to interact with the database. 
+# Exit 
+Follow the prompts to interact with the database. 
 
  
 

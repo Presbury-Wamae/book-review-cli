@@ -1,8 +1,8 @@
-BOOK REVIEW CLI  
+# BOOK REVIEW CLI  
 
 Your personal command-line book tracker and review system 
 
-OVERVIEW  
+# OVERVIEW  
 
 The Book Review CLI is a command-line application that allows users to: 
 
@@ -16,7 +16,7 @@ Get insights like total reviews and average rating per book
 
 Built using Python and SQLAlchemy, this tool is ideal for bootcamp projects, personal tracking, or CLI-based apps. 
 
-🛠 FEATURES  
+# 🛠 FEATURES  
 
 Add, view, and delete books 
 
@@ -30,7 +30,7 @@ View all reviews by a specific reader
 
 View book insights: number of reviews and average rating 
 
-PROJECT STRUCTURE  
+# PROJECT STRUCTURE  
 
 book-review-cli/  
 
@@ -46,7 +46,7 @@ book-review-cli/
 
  
 
-SETUP INSTRUCTIONS  
+# SETUP INSTRUCTIONS  
 
 Clone the repo 
 
@@ -81,20 +81,8 @@ Run the app
  python main.py 
 
  
-
  
-
- 
-
- 
-
- 
-
- 
-
- 
-
-USAGE GUIDE  
+# USAGE GUIDE  
 
 Once the app is running, you’ll see a menu like: 
 
@@ -120,7 +108,7 @@ Exit Follow the prompts to interact with the database.
 
  
 
-TECHNOLOGIES USED  
+# TECHNOLOGIES USED  
 
 Python 3 
 
@@ -132,7 +120,7 @@ Alembic (migrations)
 
  
 
-INSIGHTS FEATURE  
+# INSIGHTS FEATURE  
 
 This feature provides: 
 
@@ -156,7 +144,7 @@ Average rating per book
 
 Perfect for understanding how books are performing among readers. 
 
-FUTURE IMPROVEMENTS  
+# FUTURE IMPROVEMENTS  
 
 Add CLI-based search for books 
 
@@ -166,7 +154,7 @@ Export data to CSV or JSON
 
 Add login system for readers 
 
-AUTHOR  
+# AUTHOR  
 
 Project built by Presbury Wamae  
 

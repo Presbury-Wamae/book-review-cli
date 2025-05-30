@@ -48,7 +48,7 @@ book-review-cli/
 
 # SETUP INSTRUCTIONS  
 
-Clone the repo 
+# Clone the repo 
 
  git clone  
 
@@ -56,7 +56,7 @@ cd book-review-cli
 
  
 
-Create and activate a virtual environment 
+# Create and activate a virtual environment 
 
 python3  -m  venv  virtual 
 
@@ -64,19 +64,19 @@ source venv/bin/activate
 
  
 
-Install dependencies 
+# Install dependencies 
 
 pip install -r requirements.txt  
 
  
 
-Run Alembic migrations 
+# Run Alembic migrations 
 
  alembic upgrade head  
 
  
 
-Run the app 
+# Run the app 
 
  python main.py 
 
